@@ -10,7 +10,7 @@ export default function Featured({ product }) {
         console.log("added");
     }
     return (
-        <div className="bg-black text-white px-0 py-12">
+        <div className="bg-[#222] text-white px-0 py-12">
             <div className="max-w-[800px] my-0 mx-auto py-0 px-5">
                 <div className="grid grid-cols-11 grid-9 gap-10">
                     <div className="flex items-center col-span-6">

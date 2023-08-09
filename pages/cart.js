@@ -29,10 +29,35 @@ export default function CartPage() {
     function lessOfThisProduct(id) {
         removeProduct(id)
     }
+    async function goToPayment() {
+        const responce = await axios.post('/api/checkout', {
+            name, email, city, postalCode, streetAddress, country, cartProducts,
+            cartProducts,
+        });
+        if (responce.data.url) {
+            window.location = responce.data.url
+        }
+    }
     let total = 0;
     for (const productId of cartProducts) {
         const price = products.find(p => p._id === productId)?.price || 0;
         total += price
+    }
+
+    if (window.location.href.includes('success')) {
+        return (
+            <>
+                <Header />
+                <div className="max-w-[800px] my-0 mx-auto py-0 px-5">
+                    <div className="grid grid-cols-10 gap-10 mt-10">
+                        <div className="col-span-6 p-8 bg-white rounded-xl">
+                            <h2 className="text-4xl mt-7 mb-5 mx-0 font-normal">Thanks for your order!</h2>
+                            <p>We will contact you when it is ready.</p>
+                        </div>
+                    </div>
+                </div>
+            </>
+        )
     }
     return (
         <>
@@ -91,51 +116,48 @@ export default function CartPage() {
                     {!!cartProducts?.length && (
                         <div className="col-span-4 p-8 bg-white rounded-xl">
                             <h2 className="text-4xl mt-7 mb-5 mx-0 font-normal block">Order Information</h2>
-                            <form method="post" action="/api/checkout" >
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                value={name}
+                                name="name"
+                                onChange={ev => setName(ev.target.value)} />
+                            <input
+                                type="text"
+                                placeholder="Email"
+                                value={email}
+                                name="email"
+                                onChange={ev => setEmail(ev.target.value)} />
+                            <div className="flex gap-1">
                                 <input
                                     type="text"
-                                    placeholder="Name"
-                                    value={name}
-                                    name="name"
-                                    onChange={ev => setName(ev.target.value)} />
+                                    placeholder="City"
+                                    value={city}
+                                    name="city"
+                                    onChange={ev => setCity(ev.target.value)} />
                                 <input
                                     type="text"
-                                    placeholder="Email"
-                                    value={email}
-                                    name="email"
-                                    onChange={ev => setEmail(ev.target.value)} />
-                                <div className="flex gap-1">
-                                    <input
-                                        type="text"
-                                        placeholder="City"
-                                        value={city}
-                                        name="city"
-                                        onChange={ev => setCity(ev.target.value)} />
-                                    <input
-                                        type="text"
-                                        placeholder="Postal Code"
-                                        value={postalCode}
-                                        name="postalCode"
-                                        onChange={ev => setPostalCode(ev.target.value)} />
-                                </div>
-                                <input
-                                    type="text"
-                                    placeholder="Street Address"
-                                    value={streetAddress}
-                                    name="streetAddress"
-                                    onChange={ev => setStreetAddress(ev.target.value)} />
-                                <input
-                                    type="text"
-                                    placeholder="Country"
-                                    value={country}
-                                    name="country"
-                                    onChange={ev => setCountry(ev.target.value)} />
-                                <button className="orderBtn"
-                                    typeof="submit"
-                                >
-                                    Continue to payment
-                                </button>
-                            </form>
+                                    placeholder="Postal Code"
+                                    value={postalCode}
+                                    name="postalCode"
+                                    onChange={ev => setPostalCode(ev.target.value)} />
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Street Address"
+                                value={streetAddress}
+                                name="streetAddress"
+                                onChange={ev => setStreetAddress(ev.target.value)} />
+                            <input
+                                type="text"
+                                placeholder="Country"
+                                value={country}
+                                name="country"
+                                onChange={ev => setCountry(ev.target.value)} />
+                            <button className="orderBtn"
+                                onClick={goToPayment}>
+                                Continue to payment
+                            </button>
                         </div>
                     )}
 
