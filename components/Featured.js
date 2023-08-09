@@ -1,7 +1,14 @@
 import Link from "next/link";
 import CartIcon from "./icons/CartIcon";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 export default function Featured({ product }) {
+    const { addProduct } = useContext(CartContext);
+    function addFeaturedToCart() {
+        addProduct(product._id)
+        console.log("added");
+    }
     return (
         <div className="bg-black text-white px-0 py-12">
             <div className="max-w-[800px] my-0 mx-auto py-0 px-5">
@@ -15,7 +22,9 @@ export default function Featured({ product }) {
                                 <Link href={'/products/' + product._id} className="secBtn">
                                     Read more
                                 </Link>
-                                <button className="primaryBtn">
+                                <button className="primaryBtn"
+                                    onClick={addFeaturedToCart}
+                                >
                                     <CartIcon />
                                     Add to cart
                                 </button>

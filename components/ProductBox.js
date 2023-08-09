@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 export default function ProductBox({ _id, title, description, price, images }) {
+    const { addProduct } = useContext(CartContext);
     const url = '/product/' + _id;
     return (
         <div>
@@ -17,7 +20,9 @@ export default function ProductBox({ _id, title, description, price, images }) {
                     <div className="text-2xl font-[700]">
                         RS{price}
                     </div>
-                    <button className="cartBtn">
+                    <button className="cartBtn"
+                        onClick={() => addProduct(_id)}
+                    >
                         Add to cart
                     </button>
                 </div>
