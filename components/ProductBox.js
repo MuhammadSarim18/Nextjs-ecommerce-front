@@ -16,8 +16,8 @@ export default function ProductBox({ _id, title, description, price, images }) {
                 <Link href={url} className="text-sm">
                     {title}
                 </Link>
-                <div className="flex items-center justify-between ">
-                    <div className="text-2xl font-[700]">
+                <div className="block items-center justify-between mt-1 md:flex md:gap-1">
+                    <div className="text-xl text-right md:text-right md:font-[700]">
                         RS{price}
                     </div>
                     <button className="cartBtn"

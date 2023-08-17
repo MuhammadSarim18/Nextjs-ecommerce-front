@@ -74,7 +74,7 @@ export default function CartPage() {
         <>
             <Header />
             <div className="max-w-[800px] my-0 mx-auto py-0 px-5">
-                <div className="grid grid-cols-10 gap-10 mt-10">
+                <div className="grid grid-cols-1 md:grid-cols-10 gap-10 mt-10">
                     <div className="col-span-6 p-8 bg-white rounded-xl">
                         <h2 className="text-4xl mt-7 mb-5 mx-0 font-normal">Cart</h2>
                         {!cartProducts?.length && (
@@ -93,7 +93,7 @@ export default function CartPage() {
                                     {products.map(product => (
                                         <tr>
                                             <td className="py-3 px-0">
-                                                <div className="max-w-[100px] max-h-[100px] p-3 border rounded-xl flex items-center justify-center">
+                                                <div className="max-w-[100px] max-h-[100px] p-2 border rounded-xl flex items-center justify-center md:p-3">
                                                     <img className="max-w-[80px] max-h-[80px]" src={product.images[0]} />
                                                 </div>
                                                 {product.title}
@@ -102,7 +102,7 @@ export default function CartPage() {
                                                 <button className="addsubBtn"
                                                     onClick={() => lessOfThisProduct(product._id)}
                                                 >-</button>
-                                                <span className="px-1 py-0">
+                                                <span className="px-2 py-0 block md:inline-block md:py-0 md:px-3">
                                                     {cartProducts.filter(id => id === product._id).length}
                                                 </span>
                                                 <button className="addsubBtn"
@@ -127,7 +127,7 @@ export default function CartPage() {
 
                     </div>
                     {!!cartProducts?.length && (
-                        <div className="col-span-4 p-8 bg-white rounded-xl">
+                        <div className="col-span-6 md:col-span-4 p-8 bg-white rounded-xl">
                             <h2 className="text-4xl mt-7 mb-5 mx-0 font-normal block">Order Information</h2>
                             <input
                                 type="text"

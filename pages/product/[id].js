@@ -12,7 +12,7 @@ export default function ProductPage({ product }) {
         <>
             <Header />
             <div className="max-w-[800px] my-0 mx-auto py-0 px-5">
-                <div class="grid grid-cols-[0.8fr,1.2fr] gap-10 mt-10">
+                <div class="grid grid-cols-1 md:grid-cols-[0.8fr,1.2fr] gap-10 mt-10 mb-10">
                     <div className=" p-8 bg-white rounded-xl">
                         <ProductImages images={product.images} />
                     </div>
