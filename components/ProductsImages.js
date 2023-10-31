@@ -6,14 +6,14 @@ export default function ProductImages({ images }) {
     return (
         <>
             <div className="text-center">
-                <Image className="max-w-full mx-auto my-0 max-h-52" src={activeImage} />
+                <Image alt="A meaningful description" className="max-w-full mx-auto my-0 max-h-52" src={activeImage} />
             </div>
             <div className="flex gap-3 flex-grow-0 mt-3 ">
-                {images.map(image => (
-                    <div
-                    className={`border-2 h-12 cursor-pointer rounded-md ${image === activeImage ? 'border' : 'border-transparent'}`}
+                {images.map((image, index) => (
+                    <div key={index}
+                        className={`border-2 h-12 cursor-pointer rounded-md ${image === activeImage ? 'border' : 'border-transparent'}`}
                         onClick={() => setActiveImage(image)}>
-                        <Image
+                        <Image alt="A meaningful description"
                             className="max-w-full max-h-full p-1"
                             src={image} />
                     </div>
