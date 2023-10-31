@@ -92,7 +92,7 @@ export default function CartPage() {
                                 </thead>
                                 <tbody>
                                     {products.map(product => (
-                                        <tr>
+                                        <tr key={product._id}>
                                             <td className="py-3 px-0">
                                                 <div className="max-w-[100px] max-h-[100px] p-2 border rounded-xl flex items-center justify-center md:p-3">
                                                     <Image className="max-w-[80px] max-h-[80px]" src={product.images[0]} />
