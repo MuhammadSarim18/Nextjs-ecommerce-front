@@ -1,6 +1,7 @@
 import { CartContext } from "@/components/CartContext";
 import Header from "@/components/Header";
 import axios from "axios";
+import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 
 export default function CartPage() {
@@ -32,7 +33,7 @@ export default function CartPage() {
             setIsSuccess(true);
             clearCart();
         }
-    }, [])
+    }, [clearCart])
     function moreOfThisProduct(id) {
         addProduct(id);
     }
@@ -94,7 +95,7 @@ export default function CartPage() {
                                         <tr>
                                             <td className="py-3 px-0">
                                                 <div className="max-w-[100px] max-h-[100px] p-2 border rounded-xl flex items-center justify-center md:p-3">
-                                                    <img className="max-w-[80px] max-h-[80px]" src={product.images[0]} />
+                                                    <Image className="max-w-[80px] max-h-[80px]" src={product.images[0]} />
                                                 </div>
                                                 {product.title}
                                             </td>

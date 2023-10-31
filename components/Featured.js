@@ -2,6 +2,7 @@ import Link from "next/link";
 import CartIcon from "./icons/CartIcon";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import Image from "next/image";
 
 export default function Featured({ product }) {
     const { addProduct } = useContext(CartContext);
@@ -32,7 +33,7 @@ export default function Featured({ product }) {
                         </div>
                     </div>
                     <div className="flex items-center col-span-5">
-                        <img className="max-w-full max-h-52 block my-0 mx-auto md:max-w-full" src="https://f005.backblazeb2.com/file/sarim-next-ecommerce/1690395920743.png" />
+                        <Image className="max-w-full max-h-52 block my-0 mx-auto md:max-w-full" src="https://f005.backblazeb2.com/file/sarim-next-ecommerce/1698777272099.jpg" />
                     </div>
                 </div>
 
